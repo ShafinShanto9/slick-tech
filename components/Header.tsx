@@ -19,7 +19,7 @@ const Header = () => {
             <a className='headerLink' href="">Bussiness</a>  
         </div>
           
-        <div className='flex items-center justify-center gap-x-4 w-1/5'>
+        <div className='flex items-center justify-center gap-x-4 md:w-1/5'>
             <SearchIcon className='headerIcon' />
               <Link href='/checkout'>
                 <div className='relative cursor-pointer'>
