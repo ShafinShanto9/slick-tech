@@ -4,13 +4,15 @@ import Head from 'next/head'
 import Banner from '../components/Banner'
 import Header from '../components/Header'
 import { fetchCategories } from '../utils/fetchCategories'
+import { fetchProducts } from '../utils/fetchProducts'
 
 type Props = {
-  categories: Category[]
+  categories: Category[],
+  products: Product[]
 }
 
-const Home = ({categories}: Props) => {
-
+const Home = ({categories, products}: Props) => {
+  console.log(products);
   return (
     <div className="">
       <Head>
@@ -61,9 +63,11 @@ export default Home
 
 export const getServerSideProps: GetServerSideProps<Props> = async () => {
   const categories = await fetchCategories()
+  const products = await fetchProducts()
   return {
     props: {
-      categories
+      categories,
+      products
     }
   }
 }
