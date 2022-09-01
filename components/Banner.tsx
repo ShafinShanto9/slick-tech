@@ -1,7 +1,5 @@
-import Image from 'next/image'
-import React from 'react'
 import Button from './Button'
-
+import Image from 'next/image'
 const Banner = () => {
   return (
       <section className='h-screen sticky flex mx-auto top-0 max-w-[1350px] items-center justify-between px-8'>
@@ -17,8 +15,8 @@ const Banner = () => {
              </div>
           </div>
           <div className='relative hidden h-[450px] w-[450px] transition-all duration-500 md:inline
-          lg:h-[600px] lg:w-[600px]'>
-              <Image src='https://i.ibb.co/KsCsCJC/71-Fu-I8-Yv-CNL-AC-SL1500.jpg' layout='fill' objectFit='contain' />
+          lg:h-[550px] lg:w-[550px]'>
+            <Image src='https://i.ibb.co/8XyqVVW/oneplus-10t-5g-2-removebg-preview.png' layout='fill' objectFit='contain' />
           </div>
     </section>
   )

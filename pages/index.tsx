@@ -3,6 +3,7 @@ import type { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import Banner from '../components/Banner'
 import Header from '../components/Header'
+import Product from '../components/Product'
 import { fetchCategories } from '../utils/fetchCategories'
 import { fetchProducts } from '../utils/fetchProducts'
 
@@ -11,8 +12,14 @@ type Props = {
   products: Product[]
 }
 
-const Home = ({categories, products}: Props) => {
-  console.log(products);
+const Home = ({ categories, products }: Props) => {
+  
+  const showProducts = (category: number) => {
+    return products.filter((product) => product.category._ref === categories[category]._id).map((product) => (
+      <Product product={product} key={product._id} />
+    ))
+  }
+
   return (
     <div className="">
       <Head>
@@ -47,10 +54,11 @@ const Home = ({categories, products}: Props) => {
               ))}
             </Tab.List>
             <Tab.Panels className="mx-auto max-w-fit pt-10 pb-24 sm:px-4">
-              {/* <Tab.Panel className="tabPanel">{showProducts(0)}</Tab.Panel>
+              <Tab.Panel className="tabPanel">{showProducts(0)}</Tab.Panel>
               <Tab.Panel className="tabPanel">{showProducts(1)}</Tab.Panel>
               <Tab.Panel className="tabPanel">{showProducts(2)}</Tab.Panel>
-              <Tab.Panel className="tabPanel">{showProducts(3)}</Tab.Panel> */}
+              <Tab.Panel className="tabPanel">{showProducts(3)}</Tab.Panel>
+              <Tab.Panel className="tabPanel">{showProducts(4)}</Tab.Panel>
             </Tab.Panels>
           </Tab.Group>
           </div>
