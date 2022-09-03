@@ -1,8 +1,11 @@
 import Image from 'next/image'
 import Link from 'next/link'
 import {SearchIcon, ShoppingBagIcon, UserIcon} from '@heroicons/react/outline'
+import { useSelector } from 'react-redux'
+import { selectCartItems } from '../redux/cartSlice'
 const Header = () => {
-    const session = false
+  const session = false
+  const items= useSelector(selectCartItems)
   return (
     <header className='sticky flex justify-between items-center w-full top-0 z-30 bg-[#E7ECEE] p-4'>
         <div className='flex justify-center items-center md:w-1/5'>
@@ -23,7 +26,7 @@ const Header = () => {
             <SearchIcon className='headerIcon' />
               <Link href='/checkout'>
                 <div className='relative cursor-pointer'>
-                    <span className='absolute -right-1 -top-1 z-50 h-4 w-4 flex items-center justify-center rounded-full bg-gradient-to-r from-pink-400 to-violet-400 text-white text-[10px]'>5</span> 
+            <span className='absolute -right-1 -top-1 z-50 h-4 w-4 flex items-center justify-center rounded-full bg-gradient-to-r from-pink-400 to-violet-400 text-white text-[10px]'>{items.length}</span> 
                     <ShoppingBagIcon className='headerIcon' />  
                 </div>
               </Link>  

@@ -46,8 +46,8 @@ export const cartSlice = createSlice({
 export const { addToCart, removeFromCart } = cartSlice.actions
 
 // Selectors -> retrieving items in state to use in different components
-export const selectBasketItems = (state: RootState) => state.cart.items;
-export const selectBasketItemsWithId = (state: RootState, id: String) => {
+export const selectCartItems = (state: RootState) => state.cart.items;
+export const selectCartItemsWithId = (state: RootState, id: String) => {
     state.cart.items.filter((item: Product)=> item._id == id )
 }
 export const selectCartTotal = (state: RootState) =>

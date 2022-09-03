@@ -2,6 +2,7 @@ import { Tab } from '@headlessui/react'
 import type { GetServerSideProps } from 'next'
 import Head from 'next/head'
 import Banner from '../components/Banner'
+import CartBottomButton from '../components/CartBottomButton'
 import Header from '../components/Header'
 import Product from '../components/Product'
 import { fetchCategories } from '../utils/fetchCategories'
@@ -27,6 +28,7 @@ const Home = ({ categories, products }: Props) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <Header />
+      <CartBottomButton/>
       <main className='relative h-[200vh]'>
         <Banner/>
       </main>

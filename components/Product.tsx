@@ -1,6 +1,9 @@
 import { ShoppingCartIcon } from '@heroicons/react/outline'
 import Image from 'next/image'
 import React from 'react'
+import toast from 'react-hot-toast'
+import { useDispatch } from 'react-redux'
+import { addToCart } from '../redux/cartSlice'
 import { urlFor } from '../sanity'
 
 type Props = {
@@ -8,7 +11,15 @@ type Props = {
 }
 
 const Product = ({ product }: Props) => {
-  const addItemToCart =()=>{}
+
+  const dispatch = useDispatch()
+
+  const addItemToCart = () => {
+    dispatch(addToCart(product))
+    toast.success(`${product.title} Added To Cart`, {
+      position: 'bottom-center'
+    })
+  }
   return (
     <div className="flex h-fit w-[320px] select-none flex-col space-y-3 rounded-xl bg-[#35383C] p-8 md:h-[500px] md:w-[400px] md:p-10">
       <div className="relative h-64 w-full md:h-72">
