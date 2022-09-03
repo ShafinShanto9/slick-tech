@@ -25,10 +25,13 @@ const Header = () => {
         <div className='flex items-center justify-center gap-x-4 md:w-1/5'>
             <SearchIcon className='headerIcon' />
               <Link href='/checkout'>
-                <div className='relative cursor-pointer'>
-            <span className='absolute -right-1 -top-1 z-50 h-4 w-4 flex items-center justify-center rounded-full bg-gradient-to-r from-pink-400 to-violet-400 text-white text-[10px]'>{items.length}</span> 
-                    <ShoppingBagIcon className='headerIcon' />  
-                </div>
+              <div className='relative cursor-pointer'>
+              {
+              items.length > 0 && 
+                   (<span className='absolute -right-1 -top-1 z-50 h-4 w-4 flex items-center justify-center rounded-full bg-gradient-to-r from-pink-400 to-violet-400 text-white text-[10px]'>{items.length}</span> ) 
+              }
+                <ShoppingBagIcon className='headerIcon' />  
+              </div>
               </Link>  
 
               {session ? (
