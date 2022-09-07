@@ -3,8 +3,10 @@ import Link from 'next/link'
 import {SearchIcon, ShoppingBagIcon, UserIcon} from '@heroicons/react/outline'
 import { useSelector } from 'react-redux'
 import { selectCartItems } from '../redux/cartSlice'
+import { useSession, signIn, signOut } from "next-auth/react"
+
 const Header = () => {
-  const session = false
+  const { data: session } = useSession()
   const items= useSelector(selectCartItems)
   return (
     <header className='sticky flex justify-between items-center w-full top-0 z-30 bg-[#E7ECEE] p-4'>
@@ -37,16 +39,17 @@ const Header = () => {
               {session ? (
           <Image
             src={
+              session.user?.image || 
               "https://www.gravatar.com/avatar/00000000000000000000000000000000?d=mp&f=y"
             }
             alt=""
             className="cursor-pointer rounded-full"
             width={34}
             height={34}
-            
+            onClick={()=> signOut()}
           />
         ) : (
-          <UserIcon className="headerIcon"  />
+          <UserIcon className="headerIcon" onClick={()=> signIn()} />
         )}
         </div>
 
